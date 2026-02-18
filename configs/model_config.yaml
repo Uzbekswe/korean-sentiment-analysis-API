@@ -1,0 +1,19 @@
+# Model Configuration
+# All model hyperparameters and settings live here — not hardcoded in source code.
+
+model_name: "nlp04/korean_sentiment_analysis_kcelectra"
+max_length: 128
+
+# Emotion labels (for reference — the model provides these via id2label)
+labels:
+  0: "기쁨(행복한)"
+  1: "슬픔"
+  2: "분노"
+  3: "불안"
+  4: "상처(배신당한)"
+  5: "당황"
+  6: "기쁨"
+  7: "놀람"
+  8: "혐오"
+  9: "공포"
+  10: "중립"

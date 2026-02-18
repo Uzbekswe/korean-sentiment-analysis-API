@@ -1,0 +1,23 @@
+# docker-compose.yml — Korean Sentiment Analysis API
+# Usage: docker compose up --build
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_CONFIG_PATH=/app/configs/model_config.yaml
+    volumes:
+      - model-cache:/home/appuser/.cache  # cache HuggingFace model downloads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  model-cache:

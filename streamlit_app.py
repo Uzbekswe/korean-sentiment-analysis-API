@@ -14,7 +14,14 @@ st.set_page_config(
 )
 
 # --- Constants ---
-MODEL_NAME = "nlp04/korean_sentiment_analysis_kcelectra"
+# Read model name from config so it's not hardcoded
+import yaml
+from pathlib import Path
+
+_config_path = Path(__file__).parent / "configs" / "model_config.yaml"
+with open(_config_path) as _f:
+    _config = yaml.safe_load(_f)
+MODEL_NAME = _config["model_name"]
 
 # --- Emotion Emoji Map ---
 EMOTION_EMOJIS = {
